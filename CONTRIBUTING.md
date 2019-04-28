@@ -1,72 +1,76 @@
-If you intend to contribute to the project, please make sure you've followed the instructions provided in the [Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
-## Project Setup
-The Azure Storage development team uses [Eclipse for PHP Developers](http://www.eclipse.org/downloads/packages/eclipse-php-developers/mars2) so instructions will be tailored to that preference. However, any preferred IDE or other toolset should be usable.
+# Contributing to [project-title]
 
-### Install
-* PHP 5.6 or 7.0 above
-* [Eclipse for PHP Developers](http://www.eclipse.org/downloads/packages/eclipse-php-developers/mars2)
-* [Composer](https://getcomposer.org/) for php packages and tools management.
-* [Apache Ant](http://ant.apache.org/manual/install.html) to drive build scripts.
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
-### Development Environment Setup
-To get the source code of the SDK via **git** just type:
+When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
+a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
+provided by the bot. You will only need to do this once across all repos using our CLA.
 
-```bash
-git clone https://github.com/Azure/azure-storage-php.git
-cd ./azure-storage-php
-```
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-Run Composer to install all php package dependencies and tools:
+ - [Code of Conduct](#coc)
+ - [Issues and Bugs](#issue)
+ - [Feature Requests](#feature)
+ - [Submission Guidelines](#submit)
 
-```bash
-composer install
-```
+## <a name="coc"></a> Code of Conduct
+Help us keep this project open and inclusive. Please read and follow our [Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
-### Open project from Eclipse
-* Select **File->New->PHP Project**
-* Enter the project name (e.g. azure-storage-php)
-* Select **Create project at existing location** and navigate to the root directory of your local git repository
-* Click **Finish**
+## <a name="issue"></a> Found an Issue?
+If you find a bug in the source code or a mistake in the documentation, you can help us by
+[submitting an issue](#submit-issue) to the GitHub Repository. Even better, you can
+[submit a Pull Request](#submit-pr) with a fix.
 
-## Tests
+## <a name="feature"></a> Want a Feature?
+You can *request* a new feature by [submitting an issue](#submit-issue) to the GitHub
+Repository. If you would like to *implement* a new feature, please submit an issue with
+a proposal for your work first, to be sure that we can use it.
 
-### Configuration
-Authenticated access to Azure Storage is required to run the tests. Set the environment variable AZURE_STORAGE_CONNECTION_STRING to a valid connection string. You may use the below as a template:
+* **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
 
-```bash
-Set AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=<Account>;AccountKey=<Key>
-```
+## <a name="submit"></a> Submission Guidelines
 
-Please make sure there's no data inside the storage account used for test. Otherwise, test may fail because of the existing data.
+### <a name="submit-issue"></a> Submitting an Issue
+Before you submit an issue, search the archive, maybe your question was already answered.
 
-### Running
-You can use the following commands to run tests:
+If your issue appears to be a bug, and hasn't been reported, open a new issue.
+Help us to maximize the effort we can spend fixing issues and adding new
+features, by not reporting duplicate issues.  Providing the following information will increase the
+chances of your issue being dealt with quickly:
 
-* All tests: ``ant phpunit`` or ``phpunit -c phpunit.xml.dist``
-* All unit tests: ``ant phpunit-ut``
-* All functional tests: ``ant phpunit-ft``
-* One particular test case: ``phpunit -c phpunit.dist.xml --filter <case name>``
+* **Overview of the Issue** - if an error is being thrown a non-minified stack trace helps
+* **Version** - what version is affected (e.g. 0.1.2)
+* **Motivation for or Use Case** - explain what are you trying to do and why the current behavior is a bug for you
+* **Browsers and Operating System** - is this a problem with all browsers?
+* **Reproduce the Error** - provide a live example or a unambiguous set of steps
+* **Related Issues** - has a similar issue been reported before?
+* **Suggest a Fix** - if you can't fix the bug yourself, perhaps you can point to what might be
+  causing the problem (line of code or commit)
 
-### Testing Features
-As you develop a feature, you'll need to write tests to ensure quality. Your changes should be covered by both unit tests and functional tests. The unit tests and functional tests codes should be placed under tests/Unit and tests/Functional respectively. You should also run existing tests related to your change to address any unexpected breaks.
+You can file new issues by providing the above information at the corresponding repository's issues link: https://github.com/[organization-name]/[repository-name]/issues/new].
 
-## Pull Requests
+### <a name="submit-pr"></a> Submitting a Pull Request (PR)
+Before you submit your Pull Request (PR) consider the following guidelines:
 
-### Guidelines
-The following are the minimum requirements for any pull request that must be met before contributions can be accepted.
-* Make sure you've signed the CLA before you start working on any change.
-* Discuss any proposed contribution with the team via a GitHub issue **before** starting development.
-* Code must be professional quality
-	* You should strive to mimic the style with which we have written the library
-	* Clean, well-commented, well-designed code
-	* Try to limit the number of commits for a feature to 1-2. If you end up having too many we may ask you to squash your changes into fewer commits.
-* [ChangeLog.md](ChangeLog.md) needs to be updated describing the new change
-* Thoroughly test your feature
+* Search the repository (https://github.com/[organization-name]/[repository-name]/pulls) for an open or closed PR
+  that relates to your submission. You don't want to duplicate effort.
 
-### Branching Policy
-Changes should be based on the `dev` branch. We're following [semver](http://semver.org/). We generally release any breaking changes in the next major version (e.g. 1.0, 2.0) and non-breaking changes in the next minor or major version (e.g. 2.1, 2.2).
+* Make your changes in a new git fork:
 
-### Review Process
-We expect all guidelines to be met before accepting a pull request. As such, we will work with you to address issues we find by leaving comments in your code. Please understand that it may take a few iterations before the code is accepted as we maintain high standards on code quality. Once we feel comfortable with a contribution, we will validate the change and accept the pull request.
+* Commit your changes using a descriptive commit message
+* Push your fork to GitHub:
+* In GitHub, create a pull request
+* If we suggest changes then:
+  * Make the required updates.
+  * Rebase your fork and force push to your GitHub repository (this will update your Pull Request):
 
-Thank you for any contributions! Please let the team know if you have any questions or concerns about our contribution policy.
+    ```shell
+    git rebase master -i
+    git push -f
+    ```
+
+That's it! Thank you for your contribution!
